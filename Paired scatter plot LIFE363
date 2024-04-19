@@ -1,0 +1,39 @@
+import matplotlib.pyplot as plt
+
+data = {"Sample": ["P1", "P1", "P2", "P2", "P3", "P3",
+                   "P4", "P4", "P5", "P5", "P6", "P6",
+                   "P7", "P7", "P8", "P8"],
+        "Value": [4385.948875, 17985.97764, 5984.27177, 9840.336463, 29557.67456, 27837.28596,
+                   2320.942121, 17850.15003, 1891.857959, 9427.588806, 2045.966191, 11386.39206,
+                   3747.275465, 10695.32573, 1250.662504, 4900.755885],
+        "Condition": ["Intact", "Damaged"]  * 8 }
+
+fig, ax = plt.subplots(figsize=(5, 5))
+x_values = ["Intact", "Damaged"]
+
+for i, sample in enumerate(data["Sample"]):
+    condition = data["Condition"][i]
+    x = i % 2
+    y = data["Value"][i]
+    color = "blue" if "Intact" in condition else "red"
+    ax.scatter(x, y, color=color, edgecolor = "black", linewidth = 2, s=60, marker='o') # Increase scatter point size and change marker style
+    ax.text(x+0.05 if x == 0 else x - 0.05, y, sample, ha='center', va='center', fontsize=10, color=color) # Reduce text size
+
+# Add interaction lines
+
+for i in range(0, len(data["Sample"]), 2):
+    ax.plot(x_values, [data["Value"][i], data["Value"][i + 1]], color='black', linestyle='-', linewidth=1) # Change line width and style
+
+
+ax.set_xlabel("Condition")
+
+ax.set_ylabel("SERPINE1 Count log2 (TPM)") # Set y-axis label
+
+
+ax.legend(["Intact", "Damaged"], loc="lower right") # Adjust legend location
+
+# Add plot title
+
+plt.title("Paired Scatter Plot of SERPINE1 Expression")
+
+
