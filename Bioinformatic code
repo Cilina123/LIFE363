@@ -24,6 +24,5 @@ pseudoatom label_neutral, pos=(20, 20, 20)
 color lightblue, label_neutral
 label label_neutral, "Neutral"
 
-# Optional: adjust view settings for better visualization
-zoom all
+
 
