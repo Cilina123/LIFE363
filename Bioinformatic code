@@ -1,0 +1,29 @@
+# Define selections for hydrophobic, hydrophilic, and neutral residues
+select hydrophobic, resn ALA+VAL+LEU+ILE+MET+PHE+TYR+TRP
+select hydrophilic, resn LYS+ARG+HIS+ASP+GLU+SER+THR+ASN+GLN
+select neutral, resn GLY+PRO+CYS
+
+# Apply colors to each selection
+color lightpink, hydrophobic
+color palecyan, hydrophilic
+color lightblue, neutral
+
+# Display the structure as cartoon or surface to highlight these properties
+show cartoon, all
+
+# Label the colored selections
+pseudoatom label_hydrophobic, pos=(10, 10, 10)
+color lightpink, label_hydrophobic
+label label_hydrophobic, "Hydrophobic"
+
+pseudoatom label_hydrophilic, pos=(15, 15, 15)
+color palecyan, label_hydrophilic
+label label_hydrophilic, "Hydrophilic"
+
+pseudoatom label_neutral, pos=(20, 20, 20)
+color lightblue, label_neutral
+label label_neutral, "Neutral"
+
+# Optional: adjust view settings for better visualization
+zoom all
+
